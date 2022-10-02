@@ -11,11 +11,9 @@ namespace Week7GroupWork.Entities
         public override double CalculateSurfaceArea()
         {
             throw new NotImplementedException();
+            throw new Exception();
+            test
         }
 
-        public void Test()
-        {
-            Console.Write();
-        }
     }
 }
