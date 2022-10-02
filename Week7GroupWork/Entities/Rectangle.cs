@@ -28,4 +28,13 @@ namespace Week7GroupWork.Entities
             return Width * Height;
         }
     }
+    
+    public class Circle : Shape
+    {
+        public override double CalculateSurfaceArea()
+        {
+            return 1;
+        }
+    }
+
 }
