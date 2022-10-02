@@ -12,5 +12,10 @@ namespace Week7GroupWork.Entities
         {
             throw new NotImplementedException();
         }
+
+        public void Test()
+        {
+
+        }
     }
 }
