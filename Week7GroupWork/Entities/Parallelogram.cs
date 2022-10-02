@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace Week7GroupWork.Entities
 {
-    class Rectangle : Shape
+    class Parallelogram : Shape
     {
-        public Rectangle()
+        public Parallelogram()
         {
         }
-        public Rectangle(double width, double height) : base(width, height)
+        public Parallelogram(double width, double height) : base(width, height)
         {
         }
+
         public override void UserInput()
         {
-            Console.WriteLine("\nCalculating the area of Rectangle...\n");
-            Console.Write("Enter width length: ");
+            Console.WriteLine("\nCalculating the area of Parallelogram...\n");
+            Console.Write("Enter base length: ");
             Width = Convert.ToDouble(Console.ReadLine());
             Console.Write("Enter height length: ");
             Height = Convert.ToDouble(Console.ReadLine());
         }
-
         public override double CalculateSurface()
         {
             return Width * Height;
