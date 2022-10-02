@@ -1,2 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+using Week7GroupWork.UserInterface;
+
+var calculator = new CalculatorApp();
+calculator.Start();
