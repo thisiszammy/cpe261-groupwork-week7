@@ -24,7 +24,14 @@ namespace Week7GroupWork.Entities
         {
             Console.WriteLine("Test ra ni pol");
         }
-        
-        
+
     }
+    public class Circle : Shape
+    {
+        public override double CalculateSurfaceArea()
+        {
+            return 1;
+        }
+    }
+
 }
