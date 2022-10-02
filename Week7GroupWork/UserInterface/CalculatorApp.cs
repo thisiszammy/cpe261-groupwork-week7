@@ -17,7 +17,7 @@ namespace Week7GroupWork.UserInterface
 
         private void RunMainMenu()
         {
-            string prompt = "[MAIN MENU]\nWelcome to the Antonio's Area of a Shape Calculator. " +
+            string prompt = "[MAIN MENU]\nWelcome to the GROUP 1's Area of a Shape Calculator. " +
                 "\nNavigate through the options by pressing the ARROW Keys or WASD Keys." +
                 "\nPress ENTER to select an option.\n";
             string[] options = { "Start", "About", "Exit" };
@@ -52,7 +52,15 @@ namespace Week7GroupWork.UserInterface
             Console.Clear();
 
             Console.WriteLine("[ABOUT]");
-            Console.WriteLine("This program was created by Kenette John A. Antonio.");
+            Console.WriteLine(@"This program was created by: 
+Abad, John Paul  
+Antonio, Kenette John - Leader 
+Abapo, Ryan Angelo 
+Arranguez, Alren Vince 
+Esmero, Farley 
+Joaquino, Romnic James 
+Zamoras, Michael Jay 
+");
             Console.WriteLine("Thank you for using the app.\n");
             Console.WriteLine("Press any key to return to the MAIN MENU.");
             Console.ReadKey(true);
