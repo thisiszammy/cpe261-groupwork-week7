@@ -15,7 +15,7 @@ namespace Week7GroupWork.Entities
 
         public void Test()
         {
-
+            Console.Write();
         }
     }
 }
