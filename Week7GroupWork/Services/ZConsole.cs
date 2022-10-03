@@ -253,5 +253,47 @@ namespace Week7GroupWork.Services
         {
             return p1 + ((p2 - p1) / 2);
         }
+
+        public static void DrawBox(int x1, int x2, int y1, int y2)
+        {
+            Console.SetCursorPosition(x1, y1);
+            Console.Write('╔');
+
+            Console.SetCursorPosition(x2, y1);
+            Console.Write('╗');
+
+            Console.SetCursorPosition(x2, y2);
+            Console.Write("╝");
+
+            Console.SetCursorPosition(x1, y2);
+            Console.WriteLine("╚");
+
+
+            DrawPipe(y1, x1 + 1, x2);
+            DrawPipe(y2, x1 + 1, x2);
+
+
+            DrawPillar(x1, y1 + 1, y2);
+            DrawPillar(x2, y1 + 1, y2);
+
+
+        }
+        public static void DrawPipe(int y, int x1, int x2, char material = '═')
+        {
+            for (int i = x1; i < x2; i++)
+            {
+                Console.SetCursorPosition(i, y);
+                Console.Write('═');
+            }
+        }
+
+        public static void DrawPillar(int x, int y1, int y2)
+        {
+            for (int i = y1; i < y2; i++)
+            {
+                Console.SetCursorPosition(x, i);
+                Console.Write("║");
+            }
+        }
     }
 }
