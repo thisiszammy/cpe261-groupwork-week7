@@ -10,6 +10,7 @@ namespace Week7GroupWork.Entities
     {
         private string name;
         private int age;
+        public string id;
         public string Name
         {
             get { return name; }
