@@ -1,4 +1,6 @@
-﻿using Week7GroupWork.Services;
+﻿using Week7GroupWork.Scroller;
+using Week7GroupWork.Services;
 using System;
 
-ZConsole.Init(80, 20);
+var app = new Application();
+app.Start();
