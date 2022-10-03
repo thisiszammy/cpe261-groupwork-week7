@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Week7GroupWork.Services
 {
-    public static class CustomConsole
+    public static class ZConsole
     {
         private static int MAX_WIDTH;
         private static int MAX_HEIGHT;
@@ -249,8 +249,9 @@ namespace Week7GroupWork.Services
         //}
 
 
-        internal static int GetMidPoint(int p1, int p2)
+        public static int GetMidPoint(int p1, int p2)
         {
             return p1 + ((p2 - p1) / 2);
         }
     }
+}
