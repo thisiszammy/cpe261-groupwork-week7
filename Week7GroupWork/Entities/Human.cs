@@ -21,7 +21,7 @@ namespace Week7GroupWork.Entities
             this.height = height;
             this.weight = weight;
             this.birthDate = birthDate;
-            this.Nationality = nationality;
+            this.nationality = nationality;
         }
 
         public string FirstName { get => firstName; set => firstName = value; }
