@@ -22,27 +22,32 @@ namespace Week7GroupWork
         public void Start()
         {
             Console.Title = "SIMPS 7";
-            RunMainMenu();
+            GotoPage(ApplicationPageEnum.LaunchApp);
         }
-
-        
-
+        private void DisplaySelection(string title, ApplicationPageEnumWrapper[] options)
+        {
+            var mainMenu = new MenuScroller(title, options);
+            ApplicationPageEnum selectedPage = mainMenu.Run();
+            GotoPage(selectedPage);
+        }
         private void GotoPage(ApplicationPageEnum page, bool isPrev = false)
         {
             if (page != ApplicationPageEnum.Back && !isPrev) navigationHistory.Push(page);
 
             switch (page)
             {
-                case ApplicationPageEnum.Start:
-                    SimulatorMenu();
+                case ApplicationPageEnum.LaunchApp:
+                    ShowMainMenu();
                     break;
-
+                case ApplicationPageEnum.Start:
+                    ShowSimulatorMenu();
+                    break;
                 case ApplicationPageEnum.About:
-                    DisplayAboutInfo();
+                    RunDisplayAboutInfo();
                     break;
 
                 case ApplicationPageEnum.Exit:
-                    Exit();
+                    RunExit();
                     break;
                 case ApplicationPageEnum.W6A1:
                     RunWeek6Assignment1App();
@@ -58,27 +63,31 @@ namespace Week7GroupWork
                     return;
             }
         }
-
-        private void RunMainMenu()
+        private void ShowMainMenu()
         {
-            string title = "WELCOME TO SIMPS 7 SIMULATOR APP";
-            ApplicationPageEnumWrapper[] options = {
+            DisplaySelection("WELCOME TO SIMPS 7 SIMULATOR APP", new ApplicationPageEnumWrapper[]
+            {
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.Start),
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.About),
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.Exit),
-            };
-
-            var mainMenu = new MenuScroller(title, options);
-            int selectedPage = mainMenu.Run();
-            
-            GotoPage((ApplicationPageEnum)selectedPage);
+            });
         }
-
-        private void Exit()
+        public void ShowSimulatorMenu()
+        {
+            DisplaySelection("SIMP 7 MENU", new ApplicationPageEnumWrapper[]
+            {
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A1),
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A2),
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A3),
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A4),
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.Back)
+            });
+        }
+        private void RunExit()
         {
             Environment.Exit(0);
         }
-        private void DisplayAboutInfo()
+        private void RunDisplayAboutInfo()
         {
             Console.Clear();
             ZConsole.Init(Console.WindowWidth, Console.WindowHeight);
@@ -100,26 +109,8 @@ namespace Week7GroupWork
             ZConsole.Write("Thank you for using the app. Press any key to return to the menu.", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.BOTTOM_LEFT, yOffset: 3, xOffset: 2);
 
             Console.ReadKey(true);
-            RunMainMenu();
+            ShowMainMenu();
         }
-
-        public void SimulatorMenu()
-        {
-            string title = "SIMP 7 MENU";
-            ApplicationPageEnumWrapper[] options =
-            {
-                new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A1),
-                new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A2),
-                new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A3),
-                new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A4),
-                new ApplicationPageEnumWrapper(ApplicationPageEnum.Back)
-            };
-            var appMenu = new MenuScroller(title, options);
-            int selectedIndex = appMenu.Run();
-
-            GotoPage((ApplicationPageEnum)selectedIndex);
-        }
-
         void RunWeek6Assignment1App()
         {
             Console.Clear();

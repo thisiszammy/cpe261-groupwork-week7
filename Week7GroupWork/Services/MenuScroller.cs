@@ -56,7 +56,7 @@ namespace Week7GroupWork.Services
             Console.ResetColor();
         }
 
-        public int Run()
+        public ApplicationPageEnum Run()
         {
             ConsoleKey keyPressed;
             Console.Clear();
@@ -87,7 +87,7 @@ namespace Week7GroupWork.Services
                 }
             } while (keyPressed != ConsoleKey.Enter);
 
-            return SelectedIndex;
+            return Options[SelectedIndex].PageEnum;
         }
     }
 }

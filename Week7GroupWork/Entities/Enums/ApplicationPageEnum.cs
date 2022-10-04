@@ -9,6 +9,8 @@ namespace Week7GroupWork.Entities.Enums
 {
     public enum ApplicationPageEnum
     {
+        [Description("Launch App")]
+        LaunchApp,
         [Description("Start")]
         Start,
         [Description("About")]
