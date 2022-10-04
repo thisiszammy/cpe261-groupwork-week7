@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Week7GroupWork.Services;
+using Week7GroupWork.Entities.Enums;
 
-namespace Week7GroupWork.Scroller
+namespace Week7GroupWork.Services
 {
-    internal class Menu
+    internal class MenuScroller
     {
         private int SelectedIndex;
-        private string[] Options;
+        private ApplicationPageEnumWrapper[] Options;
         private string Title;
 
-        public Menu(string title, string[] options)
+        public MenuScroller(string title, ApplicationPageEnumWrapper[] options)
         {
             Title = title;
             Options = options;
@@ -35,7 +35,7 @@ namespace Week7GroupWork.Scroller
 
             for (int i = 0; i < Options.Length; i++)
             {
-                string currentOption = Options[i];
+                string currentOption = Options[i].ToString();
                 string prefix;
 
                 if (i == SelectedIndex)
@@ -56,7 +56,7 @@ namespace Week7GroupWork.Scroller
             Console.ResetColor();
         }
 
-        public int Run()
+        public ApplicationPageEnum Run()
         {
             ConsoleKey keyPressed;
             Console.Clear();
@@ -87,7 +87,7 @@ namespace Week7GroupWork.Scroller
                 }
             } while (keyPressed != ConsoleKey.Enter);
 
-            return SelectedIndex;
+            return Options[SelectedIndex].PageEnum;
         }
     }
 }
