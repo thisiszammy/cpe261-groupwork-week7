@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Figgle;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,22 +46,16 @@ namespace Week7GroupWork
                 case ApplicationPageEnum.About:
                     RunDisplayAboutInfo();
                     break;
-
                 case ApplicationPageEnum.Exit:
                     RunExit();
                     break;
+                case ApplicationPageEnum.Back:
+                    navigationHistory.Pop();
+                    GotoPage(navigationHistory.Peek(), true);
+                    return;
                 case ApplicationPageEnum.W6A1:
                     RunWeek6Assignment1App();
                     break;
-
-                case ApplicationPageEnum.W6A2:
-
-                    break;
-
-                case ApplicationPageEnum.Back:
-                    navigationHistory.Pop();
-                    GotoPage(navigationHistory.Peek());
-                    return;
             }
         }
         private void ShowMainMenu()
@@ -72,7 +67,7 @@ namespace Week7GroupWork
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.Exit),
             });
         }
-        public void ShowSimulatorMenu()
+        private void ShowSimulatorMenu()
         {
             DisplaySelection("SIMP 7 MENU", new ApplicationPageEnumWrapper[]
             {
@@ -85,6 +80,14 @@ namespace Week7GroupWork
         }
         private void RunExit()
         {
+            Console.Clear();
+
+            string x = FiggleFonts.Standard.Render("THANK YOU ! ! !", 0);
+            x = x.Replace("\r", "");
+            var message = x.Split('\n');
+
+            ZConsole.Write(message, 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.MIDDLE_CENTER);
+            Console.SetCursorPosition(0, 18);
             Environment.Exit(0);
         }
         private void RunDisplayAboutInfo()
@@ -109,25 +112,12 @@ namespace Week7GroupWork
             ZConsole.Write("Thank you for using the app. Press any key to return to the menu.", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.BOTTOM_LEFT, yOffset: 3, xOffset: 2);
 
             Console.ReadKey(true);
-            ShowMainMenu();
+            GotoPage(ApplicationPageEnum.Back, true);
         }
-        void RunWeek6Assignment1App()
+        private void RunWeek6Assignment1App()
         {
             Console.Clear();
-            Console.WriteLine("1] Full Execute");
-            Console.WriteLine("2] Partial Execute");
-
-            var entry = Console.ReadLine();
-
-            if (entry == "1")
-            {
-                week6Assignment1Wrapper.FullExecute();
-            }
-            else
-            {
-                week6Assignment1Wrapper.PartialExecute();
-            }
-
+            week6Assignment1Wrapper.Run();
             week6Assignment1Wrapper.ShowStorageContent();
         }
     }
