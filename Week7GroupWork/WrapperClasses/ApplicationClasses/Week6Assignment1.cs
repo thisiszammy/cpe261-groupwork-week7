@@ -5,208 +5,91 @@ using System.Text;
 using System.Threading.Tasks;
 using Week7GroupWork.Entities;
 using Week7GroupWork.Entities.BaseEntities;
+using Week7GroupWork.Services;
 
 namespace Week7GroupWork.WrapperClasses.ApplicationClasses
 {
     public class Week6Assignment1
     {
-        int storageCursor;
         Shape[] shapes;
-
         public Shape[] Shapes { get => shapes; set => shapes = value; }
 
-        public Week6Assignment1(int storageSize)
+
+        public Week6Assignment1()
         {
-            shapes = new Shape[storageSize];
-            storageCursor = 0;
+            shapes = new Shape[5];
         }
 
-        public Week6Assignment1(Shape[] shapes)
+        public void Run()
         {
-            this.shapes = shapes;
-
-            for(int i = 0; i < shapes.Length; i++)
+            for(int i = 0; i < 5; i++)
             {
-                if (shapes[i] == null)
+                int messageY = 15;
+                DrawPage();
+                switch (ShapeSelection())
                 {
-                    storageCursor = i;
-                    return;
+                    case 1:
+                        ZConsole.Write("Enter Radius : ", 1, 12, null,null);
+                        double radius = double.Parse(Console.ReadLine());
+                        shapes[i] = new Circle(radius);
+                        messageY = 14;
+                        break;
+                    case 2:
+                        ZConsole.Write("Enter Length : ", 1, 12, null, null);
+                        double length = double.Parse(Console.ReadLine());
+                        ZConsole.Write("Enter Width : ", 1, 13, null, null);
+                        double width = double.Parse(Console.ReadLine());
+                        shapes[i] = new Rectangle(length, width);
+                        break;
+                    case 3:
+                        ZConsole.Write("Enter Height : ", 1, 12, null, null);
+                        double height = double.Parse(Console.ReadLine());
+                        ZConsole.Write("Enter Base : ", 1, 13, null, null);
+                        double _base = double.Parse(Console.ReadLine());
+                        shapes[i] = new Triangle(height, _base);
+                        break;
                 }
+                ZConsole.Write("Successfully Stored Shape! Press any key to continue...", 1, messageY, null,null);
+                Console.ReadKey();
             }
+            ShowStoredShapes();
+            ZConsole.Write("Successfully Loaded Shapes! Press any key to return to menu...", 1, 15, null, null);
+            Console.ReadKey();
         }
 
-        public void PromptInputStorageSize()
+        private int ShapeSelection()
         {
-            int storageSize;
-            Console.WriteLine("Please Enter Storage Size: ");
-            var entry = Console.ReadLine();
-
-            if(!int.TryParse(entry, out storageSize))
-            {
-                Console.WriteLine("Invalid Value Entered!");
-                PromptInputStorageSize();
-                return;
-            }
-            shapes = new Shape[storageSize];
-            storageCursor = 0;
+            ZConsole.Write("1] Circle", 1, 6, null, null);
+            ZConsole.Write("2] Rectangle", 1, 7, null, null);
+            ZConsole.Write("3] Triangle", 1, 8, null, null);
+            ZConsole.Write("Select Shape: ", 1, 10, null, null);
+            return int.Parse(Console.ReadKey().KeyChar.ToString());
         }
-        public void PromptInputRectangles()
+
+        private void DrawPage()
         {
-            int rectCount = 0;
-            Console.WriteLine("How many rectangles would you like to input?");
-            var entry = Console.ReadLine();
+            Console.Clear();
+            ZConsole.DrawBox(0, Console.WindowWidth - 1, 0, 2);
+            ZConsole.Write("Week 6 Assignment 1", 0, 1, null, null, flag: ZConsole.ConsoleFormatFlags.CENTER);
 
-            if(!int.TryParse(entry, out rectCount))
-            {
-                Console.WriteLine("Invalid Value Entered!");
-                PromptInputRectangles();
-                return;
-            }
+            ZConsole.DrawBox(0, Console.WindowWidth - 1, 3, Console.WindowHeight - 2);
+            ZConsole.Write($"You can store 5 shapes. Current Storage Capacity {GetStorageCapacityInUse()}/5",1,4, null, null);
+            ZConsole.DrawClosedPipe(5, 0, Console.WindowWidth - 1);
 
-            if(shapes.Length-storageCursor-1 == 0)
-            {
-                Console.WriteLine("Shape Storage is full!");
-                return;
-            }
-
-            double length, width;
-            for(int i = 0; i < rectCount; i++)
-            {
-                shapesEntry:
-                Console.WriteLine("Rectangle {0}:", i + 1);
-                Console.Write("\tEnter Length: ");
-                var dimenEntry = Console.ReadLine();
-                if(!double.TryParse(dimenEntry, out length))
-                {
-                    Console.WriteLine("Invalid Value Entered!");
-                    goto shapesEntry;
-                }
-
-                Console.Write("\tEnter Width: ");
-                dimenEntry = Console.ReadLine();
-                if (!double.TryParse(dimenEntry, out width))
-                {
-                    Console.WriteLine("Invalid Value Entered!");
-                    goto shapesEntry;
-                }
-
-                shapes[storageCursor] = new Rectangle(length, width);
-                storageCursor++;
-            }
         }
-        public void PromptInputTriangles()
+
+        private void ShowStoredShapes()
         {
-            int rectCount = 0;
-            Console.WriteLine("How many triangles would you like to input?");
-            var entry = Console.ReadLine();
-
-            if (!int.TryParse(entry, out rectCount))
+            DrawPage();
+            int ctr = 0;
+            foreach(var item in shapes)
             {
-                Console.WriteLine("Invalid Value Entered!");
-                PromptInputRectangles();
-                return;
-            }
-
-            if (shapes.Length - storageCursor - 1 == 0)
-            {
-                Console.WriteLine("Shape Storage is full!");
-                return;
-            }
-
-            double height, _base;
-            for (int i = 0; i < rectCount; i++)
-            {
-                shapesEntry:
-                Console.WriteLine("Triangle {0}:", i + 1);
-                Console.Write("\tEnter Height: ");
-                var dimenEntry = Console.ReadLine();
-                if (!double.TryParse(dimenEntry, out height))
-                {
-                    Console.WriteLine("Invalid Value Entered!");
-                    goto shapesEntry;
-                }
-
-                Console.Write("\tEnter Base: ");
-                dimenEntry = Console.ReadLine();
-                if (!double.TryParse(dimenEntry, out _base))
-                {
-                    Console.WriteLine("Invalid Value Entered!");
-                    goto shapesEntry;
-                }
-
-                shapes[storageCursor] = new Triangle(height, _base);
-                storageCursor++;
+                ZConsole.Write(item.ToString(), 1, 6 + ctr, null, null);
+                ctr++;
             }
         }
-        public void PromptInputCircles()
-        {
-            int rectCount = 0;
-            Console.WriteLine("How many circles would you like to input?");
-            var entry = Console.ReadLine();
+        private int GetStorageCapacityInUse() => shapes.Where(x => x != null).Count();
 
-            if (!int.TryParse(entry, out rectCount))
-            {
-                Console.WriteLine("Invalid Value Entered!");
-                PromptInputRectangles();
-                return;
-            }
-
-            if (shapes.Length - storageCursor - 1 == 0)
-            {
-                Console.WriteLine("Shape Storage is full!");
-                return;
-            }
-
-            double radius;
-            for (int i = 0; i < rectCount; i++)
-            {
-                shapesEntry:
-                Console.WriteLine("Circle {0}:", i + 1);
-                Console.Write("\tEnter Radius: ");
-                var dimenEntry = Console.ReadLine();
-                if (!double.TryParse(dimenEntry, out radius))
-                {
-                    Console.WriteLine("Invalid Value Entered!");
-                    goto shapesEntry;
-                }
-
-                shapes[storageCursor] = new Circle(radius);
-                storageCursor++;
-            }
-        }
-        public void DeleteRectangles()
-        {
-            for(int i = 0; i < shapes.Length; i++)
-            {
-                if (shapes[i] == null) continue;
-                if (shapes[i].GetType() == typeof(Rectangle)) shapes[i] = null;
-            }
-        }
-        public void DeleteTriangles()
-        {
-            for (int i = 0; i < shapes.Length; i++)
-            {
-                if (shapes[i] == null) continue;
-                if (shapes[i].GetType() == typeof(Triangle)) shapes[i] = null;
-            }
-        }
-        public void DeleteCircles()
-        {
-            for (int i = 0; i < shapes.Length; i++)
-            {
-                if (shapes[i] == null) continue;
-                if (shapes[i].GetType() == typeof(Circle)) shapes[i] = null;
-            }
-        }
-
-        public void ShowAllShapes()
-        {
-            foreach(var item in Shapes)
-            {
-                if (item == null) continue;
-                Console.WriteLine(item.ToString());
-            }
-        }
 
     }
 }

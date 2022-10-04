@@ -16,7 +16,7 @@ namespace Week7GroupWork.Entities
 
         public override double GetArea()
         {
-            throw new NotImplementedException();
+            return Math.PI * Math.Pow(Radius, 2);
         }
 
         public override double GetPerimeter()
@@ -27,6 +27,11 @@ namespace Week7GroupWork.Entities
         public override double GetVolume()
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return $"Shape: Circle, Radius: {Radius.ToString("N2")}, Area: {GetArea().ToString("N2")}";
         }
     }
 }

@@ -57,6 +57,7 @@ namespace Week7GroupWork
                     RunWeek6Assignment1App();
                     break;
             }
+            GotoPage(ApplicationPageEnum.Back, true);
         }
         private void ShowMainMenu()
         {
@@ -118,7 +119,6 @@ namespace Week7GroupWork
         {
             Console.Clear();
             week6Assignment1Wrapper.Run();
-            week6Assignment1Wrapper.ShowStorageContent();
         }
     }
 }
