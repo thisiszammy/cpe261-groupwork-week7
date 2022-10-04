@@ -4,11 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Week7GroupWork.Services;
+using Week7GroupWork.WrapperClasses;
 
 namespace Week7GroupWork.Scroller
 {
     internal class Application
     {
+        Week6Assignment1Wrapper week6Assignment1Wrapper;
+
+        public Application()
+        {
+            week6Assignment1Wrapper = new Week6Assignment1Wrapper();
+        }
         public void Start()
         {
             Console.Title = "SIMPS 7";
@@ -37,7 +44,6 @@ namespace Week7GroupWork.Scroller
                     break;
             }
         }
-
         private void Exit()
         {
             //Console.WriteLine("\nPress any key to exit.");
@@ -72,14 +78,14 @@ namespace Week7GroupWork.Scroller
         public void SimulatorMenu()
         {
             string title = "SIMP 7 MENU";
-            string[] options = { "Father", "Mother", "Child", "Dog", "Cat", "Mouse", "Back" };
+            string[] options = { "Week6Assignment1", "Mother", "Child", "Dog", "Cat", "Mouse", "Back" };
             var appMenu = new Menu(title, options);
             int selectedIndex = appMenu.Run();
 
             switch (selectedIndex)
             {
                 case 0:
-
+                    RunWeek6Assignment1App();
                     break;
 
                 case 1:
@@ -90,6 +96,26 @@ namespace Week7GroupWork.Scroller
                     RunMainMenu();
                     break;
             }
+        }
+
+        void RunWeek6Assignment1App()
+        {
+            Console.Clear();
+            Console.WriteLine("1] Full Execute");
+            Console.WriteLine("2] Partial Execute");
+
+            var entry = Console.ReadLine();
+
+            if(entry == "1")
+            {
+                week6Assignment1Wrapper.FullExecute();
+            }
+            else
+            {
+                week6Assignment1Wrapper.PartialExecute();
+            }
+
+            week6Assignment1Wrapper.ShowStorageContent();
         }
     }
 }
