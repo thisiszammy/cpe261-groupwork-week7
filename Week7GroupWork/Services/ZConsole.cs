@@ -275,9 +275,19 @@ namespace Week7GroupWork.Services
 
             DrawPillar(x1, y1 + 1, y2);
             DrawPillar(x2, y1 + 1, y2);
-
-
         }
+
+        public static void DrawClosedPipe(int y, int x1, int x2)
+        {
+            DrawPipe(y, x1, x2);
+
+            Console.SetCursorPosition(x1, y);
+            Console.Write("╠");
+
+            Console.SetCursorPosition(x2, y);
+            Console.Write("╣");
+        }
+
         public static void DrawPipe(int y, int x1, int x2, char material = '═')
         {
             for (int i = x1; i < x2; i++)
@@ -295,5 +305,6 @@ namespace Week7GroupWork.Services
                 Console.Write("║");
             }
         }
+
     }
 }
