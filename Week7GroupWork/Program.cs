@@ -1,6 +1,6 @@
-﻿using Week7GroupWork.Scroller;
-using Week7GroupWork.Services;
+﻿using Week7GroupWork.Services;
 using System;
+using Week7GroupWork;
 
-var app = new Application();
+var app = new ApplicationManager();
 app.Start();

@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Week7GroupWork.Entities.Enums;
 using Week7GroupWork.Services;
 using Week7GroupWork.WrapperClasses;
 
-namespace Week7GroupWork.Scroller
+namespace Week7GroupWork
 {
-    internal class Application
+    internal class ApplicationManager
     {
         Week6Assignment1Wrapper week6Assignment1Wrapper;
+        Stack<ApplicationPageEnum> navigationHistory;
 
-        public Application()
+        public ApplicationManager()
         {
             week6Assignment1Wrapper = new Week6Assignment1Wrapper();
+            navigationHistory = new Stack<ApplicationPageEnum>();
         }
         public void Start()
         {
@@ -22,34 +25,58 @@ namespace Week7GroupWork.Scroller
             RunMainMenu();
         }
 
-        private void RunMainMenu()
-        {
-            string title = "WELCOME TO SIMPS 7 SIMULATOR APP";
-            string[] options = { "Start", "About", "Exit" };
-            var mainMenu = new Menu(title, options);
-            int selectedIndex = mainMenu.Run();
+        
 
-            switch (selectedIndex)
+        private void GotoPage(ApplicationPageEnum page, bool isPrev = false)
+        {
+            if (page != ApplicationPageEnum.Back && !isPrev) navigationHistory.Push(page);
+
+            switch (page)
             {
-                case 0:
+                case ApplicationPageEnum.Start:
                     SimulatorMenu();
                     break;
 
-                case 1:
+                case ApplicationPageEnum.About:
                     DisplayAboutInfo();
                     break;
 
-                case 2:
+                case ApplicationPageEnum.Exit:
                     Exit();
                     break;
+                case ApplicationPageEnum.W6A1:
+                    RunWeek6Assignment1App();
+                    break;
+
+                case ApplicationPageEnum.W6A2:
+
+                    break;
+
+                case ApplicationPageEnum.Back:
+                    navigationHistory.Pop();
+                    GotoPage(navigationHistory.Peek());
+                    return;
             }
         }
+
+        private void RunMainMenu()
+        {
+            string title = "WELCOME TO SIMPS 7 SIMULATOR APP";
+            ApplicationPageEnumWrapper[] options = {
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.Start),
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.About),
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.Exit),
+            };
+
+            var mainMenu = new MenuScroller(title, options);
+            int selectedPage = mainMenu.Run();
+            
+            GotoPage((ApplicationPageEnum)selectedPage);
+        }
+
         private void Exit()
         {
-            //Console.WriteLine("\nPress any key to exit.");
-            //Console.ReadKey(true);
             Environment.Exit(0);
-
         }
         private void DisplayAboutInfo()
         {
@@ -70,32 +97,27 @@ namespace Week7GroupWork.Scroller
             ZConsole.Write("Zamoras, Michael Jay", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.TOP_LEFT, yOffset: 12, xOffset: 2);
 
             ZConsole.DrawBox(0, Console.WindowWidth - 1, Console.WindowHeight - 4, Console.WindowHeight - 2);
-            ZConsole.Write("Thank you for using the app. Press any key to return to the menu.", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.BOTTOM_LEFT, yOffset: 3,xOffset: 2);
+            ZConsole.Write("Thank you for using the app. Press any key to return to the menu.", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.BOTTOM_LEFT, yOffset: 3, xOffset: 2);
 
             Console.ReadKey(true);
             RunMainMenu();
         }
+
         public void SimulatorMenu()
         {
             string title = "SIMP 7 MENU";
-            string[] options = { "Week6Assignment1", "Mother", "Child", "Dog", "Cat", "Mouse", "Back" };
-            var appMenu = new Menu(title, options);
+            ApplicationPageEnumWrapper[] options =
+            {
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A1),
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A2),
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A3),
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A4),
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.Back)
+            };
+            var appMenu = new MenuScroller(title, options);
             int selectedIndex = appMenu.Run();
 
-            switch (selectedIndex)
-            {
-                case 0:
-                    RunWeek6Assignment1App();
-                    break;
-
-                case 1:
-
-                    break;
-
-                case 6:
-                    RunMainMenu();
-                    break;
-            }
+            GotoPage((ApplicationPageEnum)selectedIndex);
         }
 
         void RunWeek6Assignment1App()
@@ -106,7 +128,7 @@ namespace Week7GroupWork.Scroller
 
             var entry = Console.ReadLine();
 
-            if(entry == "1")
+            if (entry == "1")
             {
                 week6Assignment1Wrapper.FullExecute();
             }
