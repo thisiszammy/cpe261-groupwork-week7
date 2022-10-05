@@ -305,6 +305,5 @@ namespace Week7GroupWork.Services
                 Console.Write("║");
             }
         }
-
     }
 }
