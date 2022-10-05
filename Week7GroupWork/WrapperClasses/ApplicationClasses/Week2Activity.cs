@@ -7,7 +7,7 @@ using Week7GroupWork.Services;
 
 namespace Week7GroupWork.WrapperClasses.ApplicationClasses
 {
-    internal class Week2Activity
+    public class Week2Activity
     {
         public void Run()
         {

@@ -11,11 +11,6 @@ namespace Week7GroupWork.WrapperClasses
     {
         Week6Assignment2 catAndJerry;
 
-        public Week6Assignment2Wrapper()
-        {
-            this.catAndJerry = new Week6Assignment2();
-        }
-
         public Week6Assignment2Wrapper(Week6Assignment2 catAndJerry)
         {
             this.catAndJerry = catAndJerry;

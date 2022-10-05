@@ -13,23 +13,35 @@ namespace Week7GroupWork
 {
     internal class ApplicationManager
     {
+        Week1AppWrapper week1AppWrapper;
+        Week2ActivityWrapper week2ActivityWrapper;
+        Week3Assignment1Wrapper week3Assignment1Wrapper;
+        Week3Assignment1V2Wrapper week3Assignment1V2Wrapper;
         Week4Assignment2Wrapper week4Assignment2Wrapper;
         Week6Assignment1Wrapper week6Assignment1Wrapper;
         Week6Assignment2Wrapper week6Assignment2Wrapper;
-        Week2ActivityWrapper week2ActivityWrapper;
         
         Stack<ApplicationPageEnum> navigationHistory;
 
-        private Week3Assignment1Wrapper week3Assignment1Wrapper;
         public ApplicationManager()
         {
-            week4Assignment2Wrapper = new Week4Assignment2Wrapper();
-            week6Assignment1Wrapper = new Week6Assignment1Wrapper();
-            week6Assignment2Wrapper = new Week6Assignment2Wrapper();
-            week2ActivityWrapper = new Week2ActivityWrapper();
+            Week1App week1App = new Week1App();
+            Week2Activity week2Activity = new Week2Activity();
+            Week3Assignment1 week3Assignment1 = new Week3Assignment1();
+            Week3Assignment1_V2 week3Assignment1_V2 = new Week3Assignment1_V2();
+            Week4Assignment2 week4Assignment2 = new Week4Assignment2();
+            Week6Assignment1 week6Assignment1 = new Week6Assignment1();
+            Week6Assignment2 week6Assignment2 = new Week6Assignment2();
+
+            week1AppWrapper = new Week1AppWrapper(week1App);
+            week2ActivityWrapper = new Week2ActivityWrapper(week2Activity);
+            week3Assignment1Wrapper = new Week3Assignment1Wrapper(week3Assignment1);
+            week3Assignment1V2Wrapper = new Week3Assignment1V2Wrapper(week3Assignment1_V2);
+            week4Assignment2Wrapper = new Week4Assignment2Wrapper(week4Assignment2);
+            week6Assignment1Wrapper = new Week6Assignment1Wrapper(week6Assignment1);
+            week6Assignment2Wrapper = new Week6Assignment2Wrapper(week6Assignment2);
             
             navigationHistory = new Stack<ApplicationPageEnum>();
-            week3Assignment1Wrapper = new Week3Assignment1Wrapper();
         }
         public void Start()
         {
@@ -61,21 +73,23 @@ namespace Week7GroupWork
                     RunExit();
                     break;
                 case ApplicationPageEnum.ASS3:
-                    Week1AppWrapper week = new Week1AppWrapper(new Week1App());
-                    week.weekass3();
+                    // Week 1 Activity
+                    week1AppWrapper.weekass3();
                     break;
                 case ApplicationPageEnum.W2Act:
                     RunWeek2ActApp();
                     // Week 2 Activity
                     break;
                 case ApplicationPageEnum.W3A1:
+                    // Week 3 Assignment 1
                     week3Assignment1Wrapper.callPol();
                     break;
-                case ApplicationPageEnum.W4A1:
-                    Week3Assignment1V2Wrapper w3a1_2 = new Week3Assignment1V2Wrapper(new Week3Assignment1_V2());
-                    w3a1_2.Display();
+                case ApplicationPageEnum.W3A1V2:
+                    // Week 3 Assignment 1 (Version 2)
+                    week3Assignment1V2Wrapper.Display();
                     break;
                 case ApplicationPageEnum.W4A2:
+                    // Week 4 Assignment 2
                     week4Assignment2Wrapper.Access();
                     break;
                 case ApplicationPageEnum.W6A1:
@@ -109,7 +123,7 @@ namespace Week7GroupWork
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.ASS3),
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.W2Act),
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.W3A1),
-                new ApplicationPageEnumWrapper(ApplicationPageEnum.W4A1),
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.W3A1V2),
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.W4A2),
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A1),
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A2),

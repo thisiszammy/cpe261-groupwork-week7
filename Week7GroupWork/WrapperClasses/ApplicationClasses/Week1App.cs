@@ -21,6 +21,20 @@ namespace Week7GroupWork.WrapperClasses.ApplicationClasses
                 }
             }
         }
+
+        public class CircleWrapper
+        {
+            public class Circle
+            {
+                public double Area(double radius)
+                {
+                    double area;
+                    area = radius * radius * Math.PI;
+                    return area;
+                }
+            }
+        }
+
         public void weekass3()
         {
             string First, Last;

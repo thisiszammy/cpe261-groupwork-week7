@@ -13,11 +13,6 @@ namespace Week7GroupWork.WrapperClasses
     {
         Week6Assignment1 functionality;
 
-        public Week6Assignment1Wrapper()
-        {
-            this.functionality = new Week6Assignment1();
-        }
-
         public Week6Assignment1Wrapper(Week6Assignment1 functionality)
         {
             this.functionality = functionality;

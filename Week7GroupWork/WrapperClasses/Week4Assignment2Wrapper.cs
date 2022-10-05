@@ -15,11 +15,6 @@ namespace Week7GroupWork.WrapperClasses
         {
             Alren = alren;
         }
-        public Week4Assignment2Wrapper()
-        {
-            Alren = new Week4Assignment2();
-        }
-
         public void Access()
         {
             Console.Clear();

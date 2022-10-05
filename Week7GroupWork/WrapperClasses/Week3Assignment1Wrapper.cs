@@ -10,10 +10,6 @@ namespace Week7GroupWork.WrapperClasses
     public class Week3Assignment1Wrapper
     {
         private Week3Assignment1 POL;
-        public Week3Assignment1Wrapper()
-        {
-            POL = new Week3Assignment1();
-        }
         public Week3Assignment1Wrapper(Week3Assignment1 pOL)
         {
             POL = pOL;

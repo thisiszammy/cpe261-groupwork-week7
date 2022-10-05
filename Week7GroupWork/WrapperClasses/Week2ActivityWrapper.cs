@@ -11,10 +11,11 @@ namespace Week7GroupWork.WrapperClasses
     {
         Week2Activity functionality;
 
-        public Week2ActivityWrapper()
+        public Week2ActivityWrapper(Week2Activity functionality)
         {
-            this.functionality = new Week2Activity();
+            this.functionality = functionality;
         }
+
         public void Run() => functionality.Run();
     }
 }
