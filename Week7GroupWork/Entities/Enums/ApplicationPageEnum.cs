@@ -23,7 +23,7 @@ namespace Week7GroupWork.Entities.Enums
         W2Act,
         [Description("Week 3 Assignment 1")]
         W3A1,
-        [Description("Week 4 Assignment 1")]
+        [Description("Week 3 Assignment 1 V2")]
         W4A1,
         [Description("Week 4 Assignment 2")]
         W4A2,
