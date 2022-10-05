@@ -17,7 +17,7 @@ namespace Week7GroupWork.Entities
 
         public override double GetArea()
         {
-            throw new NotImplementedException();
+            return Length * Width / 2;
         }
 
         public override double GetPerimeter()
@@ -28,6 +28,12 @@ namespace Week7GroupWork.Entities
         public override double GetVolume()
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return $"Shape: Triangle, Height: {Length.ToString("N2")}, Base: {Width.ToString("N2")} " +
+                $", Area: {GetArea().ToString("N2")}";
         }
     }
 }
