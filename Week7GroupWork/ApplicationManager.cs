@@ -13,12 +13,14 @@ namespace Week7GroupWork
 {
     internal class ApplicationManager
     {
+        Week4Assignment2Wrapper week4Assignment2Wrapper;
         Week6Assignment1Wrapper week6Assignment1Wrapper;
         Week2ActivityWrapper week2ActivityWrapper;
         Stack<ApplicationPageEnum> navigationHistory;
 
         public ApplicationManager()
         {
+            week4Assignment2Wrapper = new Week4Assignment2Wrapper();
             week6Assignment1Wrapper = new Week6Assignment1Wrapper();
             week2ActivityWrapper = new Week2ActivityWrapper();
             navigationHistory = new Stack<ApplicationPageEnum>();
@@ -68,7 +70,7 @@ namespace Week7GroupWork
                     // Week 4 Assignment 1
                     break;
                 case ApplicationPageEnum.W4A2:
-                    // Week 4 Assignment 2
+                    week4Assignment2Wrapper.Access();
                     break;
                 case ApplicationPageEnum.W6A1:
                     // Week 6 Assignment 1

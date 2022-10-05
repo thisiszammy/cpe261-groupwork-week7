@@ -12,7 +12,18 @@ namespace Week7GroupWork.Entities
         string firstName, lastName, sex, nationality;
         double height, weight;
         DateTime birthDate;
-
+        public Human()
+        {  
+            Console.Write("\tEnter Firstname: ");
+            FirstName = Console.ReadLine();
+            Console.Write("\tEnter Lastname: ");
+            LastName = Console.ReadLine();
+        }
+        public Human(string FirstName,string LastName)
+        {
+            firstName = FirstName;
+            lastName = LastName;
+        }
         public Human(string firstName, string lastName, string sex, double height, double weight, DateTime birthDate, string nationality)
         {
             this.firstName = firstName;
