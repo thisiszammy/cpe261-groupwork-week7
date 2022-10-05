@@ -66,6 +66,7 @@ namespace Week7GroupWork
                     break;
                 case ApplicationPageEnum.W6A1:
                     // Week 6 Assignment 1
+                    RunWeek6Assignment1App();
                     break;
                 case ApplicationPageEnum.W6A2:
                     // Week 6 Assignment 2
@@ -140,11 +141,6 @@ namespace Week7GroupWork
         {
             Console.Clear();
             week6Assignment1Wrapper.Run();
-        }
-        private void Sample()
-        {
-            Console.Clear();
-            Console.WriteLine("Running Week 1 Something...");
         }
     }
 }
