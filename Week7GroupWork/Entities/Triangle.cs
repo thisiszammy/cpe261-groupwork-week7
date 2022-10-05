@@ -20,14 +20,14 @@ namespace Week7GroupWork.Entities
             return Length * Width / 2;
         }
 
-        public override double GetPerimeter()
+        public override double GetSurfaceArea()
         {
             throw new NotImplementedException();
         }
 
         public override double GetVolume()
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("2D Shape 'Triangle' does not have Volume!");
         }
 
         public override string ToString()

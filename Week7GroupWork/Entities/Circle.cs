@@ -13,13 +13,16 @@ namespace Week7GroupWork.Entities
             : base(radius)
         {
         }
+        public Circle()
+        {
 
+        }
         public override double GetArea()
         {
             return Math.PI * Math.Pow(Radius, 2);
         }
 
-        public override double GetPerimeter()
+        public override double GetSurfaceArea()
         {
             throw new NotImplementedException();
         }

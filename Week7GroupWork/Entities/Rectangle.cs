@@ -14,9 +14,12 @@ namespace Week7GroupWork.Entities
         {
 
         }
+        public Rectangle()
+        {
 
+        }
         public override double GetArea() => Length * Width;
-        public override double GetPerimeter() => (2 * Length) + (2 * Width);
+        public override double GetSurfaceArea() => (2 * Length) + (2 * Width);
 
         public override double GetVolume()
         {
@@ -26,7 +29,7 @@ namespace Week7GroupWork.Entities
         public override string ToString()
         {
             return $"Shape: Rectangle, Length: {Length.ToString("N2")}, Width: {Width.ToString("N2")} " +
-                $", Area: {GetArea().ToString("N2")}, Perimeter: {GetPerimeter().ToString("N2")}";
+                $", Area: {GetArea().ToString("N2")}, Perimeter: {GetSurfaceArea().ToString("N2")}";
         }
     }
 }
