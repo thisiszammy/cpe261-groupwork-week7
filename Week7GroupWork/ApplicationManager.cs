@@ -13,6 +13,7 @@ namespace Week7GroupWork
 {
     internal class ApplicationManager
     {
+        Week4Assignment2Wrapper week4Assignment2Wrapper;
         Week6Assignment1Wrapper week6Assignment1Wrapper;
         Week6Assignment2Wrapper week6Assignment2Wrapper;
         Week2ActivityWrapper week2ActivityWrapper;
@@ -21,6 +22,7 @@ namespace Week7GroupWork
 
         public ApplicationManager()
         {
+            week4Assignment2Wrapper = new Week4Assignment2Wrapper();
             week6Assignment1Wrapper = new Week6Assignment1Wrapper();
             week6Assignment2Wrapper = new Week6Assignment2Wrapper();
             week2ActivityWrapper = new Week2ActivityWrapper();
@@ -73,7 +75,7 @@ namespace Week7GroupWork
                     w3a1_2.Display();
                     break;
                 case ApplicationPageEnum.W4A2:
-                    // Week 4 Assignment 2
+                    week4Assignment2Wrapper.Access();
                     break;
                 case ApplicationPageEnum.W6A1:
                     // Week 6 Assignment 1
