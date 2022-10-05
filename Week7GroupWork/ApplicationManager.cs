@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Week7GroupWork.Entities.Enums;
 using Week7GroupWork.Services;
 using Week7GroupWork.WrapperClasses;
+using Week7GroupWork.WrapperClasses.ApplicationClasses;
 
 namespace Week7GroupWork
 {
@@ -50,7 +51,9 @@ namespace Week7GroupWork
                     RunExit();
                     break;
                 case ApplicationPageEnum.ASS3:
-                    // Assignment 3 Function
+                    Week1AppWrapper week = new Week1AppWrapper(new Week1App());
+                    week.weekass3();
+                    
                     break;
                 case ApplicationPageEnum.W2Act:
                     // Week 2 Activity
