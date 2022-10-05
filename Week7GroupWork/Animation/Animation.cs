@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Week7GroupWork.Animation
 {
-    internal class Animation
+    internal class TextAnimation
     {
-        public static void TextAnimation(string[] frames, int delay = 100, string name = "Animal", string action = "moving")
+        public static void TextAnimation1(string[] frames, int delay = 100, string name = "Animal", string action = "moving")
         {
             Console.Clear();
             Console.SetCursorPosition(0, 20);

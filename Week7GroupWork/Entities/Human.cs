@@ -32,5 +32,14 @@ namespace Week7GroupWork.Entities
         public DateTime BirthDate { get => birthDate; set => birthDate = value; }
         public string Nationality { get => nationality; set => nationality = value; }
 
+        public override void Back()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override double GetVelocity(double distance, double time)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

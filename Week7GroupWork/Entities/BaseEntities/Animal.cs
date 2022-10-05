@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Week7GroupWork.Animation;
 using Week7GroupWork.Interfaces;
 
 namespace Week7GroupWork.Entities.BaseEntities
@@ -13,10 +15,16 @@ namespace Week7GroupWork.Entities.BaseEntities
         public int Thirst { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int Hunger { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public void Back()
+        public void Run(string name)
         {
-            throw new NotImplementedException();
+            name ??= "Tom";
+            string[] frames = { $"{name} is running.", $"{name} is running..", $"{name} is running...", $"{name} is running   " };
+            TextAnimation.TextAnimation1(frames, 100);
         }
+        public abstract void Back();
+
+        public abstract double GetVelocity(double distance, double time);
+
 
         public void Drink()
         {
@@ -28,14 +36,5 @@ namespace Week7GroupWork.Entities.BaseEntities
             throw new NotImplementedException();
         }
 
-        public double GetVelocity()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Run()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

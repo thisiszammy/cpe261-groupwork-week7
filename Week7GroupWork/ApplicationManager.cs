@@ -13,11 +13,13 @@ namespace Week7GroupWork
     internal class ApplicationManager
     {
         Week6Assignment1Wrapper week6Assignment1Wrapper;
+        Week6Assignment2Wrapper week6Assignment2Wrapper;
         Stack<ApplicationPageEnum> navigationHistory;
 
         public ApplicationManager()
         {
             week6Assignment1Wrapper = new Week6Assignment1Wrapper();
+            week6Assignment2Wrapper = new Week6Assignment2Wrapper();
             navigationHistory = new Stack<ApplicationPageEnum>();
         }
         public void Start()
@@ -70,6 +72,7 @@ namespace Week7GroupWork
                     break;
                 case ApplicationPageEnum.W6A2:
                     // Week 6 Assignment 2
+                    RunWeek6Assignment2App();
                     break;
                 case ApplicationPageEnum.Back:
                     navigationHistory.Pop();
@@ -142,6 +145,12 @@ namespace Week7GroupWork
             Console.Clear();
             Console.CursorVisible = true;
             week6Assignment1Wrapper.Run();
+        }
+
+        private void RunWeek6Assignment2App()
+        {
+            Console.Clear();
+            week6Assignment2Wrapper.Run();
         }
     }
 }

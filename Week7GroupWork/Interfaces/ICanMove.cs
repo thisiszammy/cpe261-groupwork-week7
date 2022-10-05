@@ -9,8 +9,9 @@ namespace Week7GroupWork.Interfaces
     public interface ICanMove
     {
         public double Velocity { get; set; }
-        public void Run();
+
+        public void Run(string name);
         public void Back();
-        public double GetVelocity();
+        public double GetVelocity(double distance, double time);
     }
 }
