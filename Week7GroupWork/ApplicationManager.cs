@@ -22,7 +22,7 @@ namespace Week7GroupWork
         }
         public void Start()
         {
-            Console.Title = "SIMPS 7";
+            Console.Title = "THE SIMPS 7";
             GotoPage(ApplicationPageEnum.LaunchApp);
         }
         private void DisplaySelection(string title, ApplicationPageEnumWrapper[] options)
@@ -80,7 +80,7 @@ namespace Week7GroupWork
         }
         private void ShowMainMenu()
         {
-            DisplaySelection("WELCOME TO SIMPS 7 SIMULATOR APP", new ApplicationPageEnumWrapper[]
+            DisplaySelection("WELCOME TO THE SIMPS 7 SIMULATOR APP", new ApplicationPageEnumWrapper[]
             {
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.Start),
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.About),
@@ -89,7 +89,7 @@ namespace Week7GroupWork
         }
         private void ShowSimulatorMenu()
         {
-            DisplaySelection("SIMP 7 MENU", new ApplicationPageEnumWrapper[]
+            DisplaySelection("THE SIMPS 7 MENU", new ApplicationPageEnumWrapper[]
             {
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.ASS3),
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.W2Act),
@@ -140,6 +140,7 @@ namespace Week7GroupWork
         private void RunWeek6Assignment1App()
         {
             Console.Clear();
+            Console.CursorVisible = true;
             week6Assignment1Wrapper.Run();
         }
     }
