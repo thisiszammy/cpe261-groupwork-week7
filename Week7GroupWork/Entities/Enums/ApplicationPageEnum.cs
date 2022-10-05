@@ -31,6 +31,22 @@ namespace Week7GroupWork.Entities.Enums
         W6A1,
         [Description("Week 6 Assignment 2")]
         W6A2,
+        [Description("Cat")]
+        Cat,
+        [Description("Jerry")]
+        Jerry,
+        [Description("Run")]
+        Run,
+        [Description("Name Your Cat")]
+        NameYourCat,
+        [Description("Retreat")]
+        Retreat,
+        [Description("Calculate Velocity")]
+        CalculateVelocity,
+        [Description("Eat")]
+        Eat,
+        [Description("Drink")]
+        Drink,
         [Description("Back")]
         Back,
     }

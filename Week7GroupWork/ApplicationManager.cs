@@ -14,18 +14,22 @@ namespace Week7GroupWork
     internal class ApplicationManager
     {
         Week6Assignment1Wrapper week6Assignment1Wrapper;
+        Week6Assignment2Wrapper week6Assignment2Wrapper;
         Week2ActivityWrapper week2ActivityWrapper;
+        
         Stack<ApplicationPageEnum> navigationHistory;
 
         public ApplicationManager()
         {
             week6Assignment1Wrapper = new Week6Assignment1Wrapper();
+            week6Assignment2Wrapper = new Week6Assignment2Wrapper();
             week2ActivityWrapper = new Week2ActivityWrapper();
+            
             navigationHistory = new Stack<ApplicationPageEnum>();
         }
         public void Start()
         {
-            Console.Title = "SIMPS 7";
+            Console.Title = "THE SIMPS 7";
             GotoPage(ApplicationPageEnum.LaunchApp);
         }
         private void DisplaySelection(string title, ApplicationPageEnumWrapper[] options)
@@ -76,6 +80,7 @@ namespace Week7GroupWork
                     break;
                 case ApplicationPageEnum.W6A2:
                     // Week 6 Assignment 2
+                    RunWeek6Assignment2App();
                     break;
                 case ApplicationPageEnum.Back:
                     navigationHistory.Pop();
@@ -86,7 +91,7 @@ namespace Week7GroupWork
         }
         private void ShowMainMenu()
         {
-            DisplaySelection("WELCOME TO SIMPS 7 SIMULATOR APP", new ApplicationPageEnumWrapper[]
+            DisplaySelection("WELCOME TO THE SIMPS 7 SIMULATOR APP", new ApplicationPageEnumWrapper[]
             {
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.Start),
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.About),
@@ -95,7 +100,7 @@ namespace Week7GroupWork
         }
         private void ShowSimulatorMenu()
         {
-            DisplaySelection("SIMP 7 MENU", new ApplicationPageEnumWrapper[]
+            DisplaySelection("THE SIMPS 7 MENU", new ApplicationPageEnumWrapper[]
             {
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.ASS3),
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.W2Act),
@@ -146,8 +151,16 @@ namespace Week7GroupWork
         private void RunWeek6Assignment1App()
         {
             Console.Clear();
+            Console.CursorVisible = true;
             week6Assignment1Wrapper.Run();
         }
+        
+        private void RunWeek6Assignment2App()
+        {
+            Console.Clear();
+            week6Assignment2Wrapper.Run();
+        }
+            
         private void RunWeek2ActApp()
         {
             Console.Clear();
