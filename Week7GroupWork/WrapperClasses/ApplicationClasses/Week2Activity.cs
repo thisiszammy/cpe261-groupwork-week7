@@ -35,5 +35,10 @@ namespace Week7GroupWork.WrapperClasses.ApplicationClasses
             Console.Write("Average = {0:F3}", Math.Round(ave, 3));
             Console.ReadKey();
         }
+
+        internal void Main()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
