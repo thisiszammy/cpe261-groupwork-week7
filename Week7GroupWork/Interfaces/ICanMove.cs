@@ -10,7 +10,7 @@ namespace Week7GroupWork.Interfaces
     {
         public double Velocity { get; set; }
 
-        public void Run(string name);
+        public void Run(int id, string name);
         public void Back();
         public double GetVelocity(double distance, double time);
     }

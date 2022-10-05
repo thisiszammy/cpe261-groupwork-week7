@@ -146,7 +146,6 @@ namespace Week7GroupWork
             Console.CursorVisible = true;
             week6Assignment1Wrapper.Run();
         }
-
         private void RunWeek6Assignment2App()
         {
             Console.Clear();

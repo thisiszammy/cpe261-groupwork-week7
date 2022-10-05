@@ -59,7 +59,7 @@ namespace Week7GroupWork.Entities
                     ShowCatMenu();
                     break;
                 case ApplicationPageEnum.Run:
-                    Run(Name);
+                    Run(1, Name);
                     StartCat();
                     break;
                 case ApplicationPageEnum.NameYourCat:
@@ -112,18 +112,126 @@ namespace Week7GroupWork.Entities
         {
             Console.Clear();
             Console.CursorVisible = true;
-            Console.Write("Name your cat: ");
+
+            ZConsole.DrawBox(0, Console.WindowWidth - 1, 0, 2);
+            ZConsole.Write("Naming Your Cat", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.TOP_CENTER, yOffset: 1);
+
+            ZConsole.DrawBox(0, Console.WindowWidth - 1, 3, Console.WindowHeight - 5);
+            ZConsole.DrawBox(0, Console.WindowWidth - 1, Console.WindowHeight - 4, Console.WindowHeight - 2);
+            ZConsole.Write("Enter the name of your cat: ", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.TOP_LEFT, yOffset: 5, xOffset: 2);
             Name = Console.ReadLine();
-            Console.WriteLine("\nNew name has been set.");
-            Console.WriteLine("\nPress any key to go back.");
+
+            Console.CursorVisible = false;
+            ZConsole.Write("New name has been set. Press any key to go back.", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.BOTTOM_LEFT, yOffset: 3, xOffset: 2);
             Console.ReadKey(true);
         }
 
         public override void Back()
         {
             Name ??= "Tom";
-            string[] frames = { $"{Name} is retreating.", $"{Name} is retreating..", $"{Name} is retreating...", $"{Name} is retreating   " };
-            TextAnimation.TextAnimation1(frames, 100);
+            //string[] frames = { $"{Name} is retreating.  ", $"{Name} is retreating.. ", $"{Name} is retreating...", $"{Name} is retreating   " };
+
+            string[] frames = { @"
+                            ▄▄█▄▄▄,          ▄▄▓▓█▓▓█▓▄╖                                        
+                            ██████████▄▄▄▄▄▄███████████████,                   ,▄█`             
+                            ███▀▀████████████████████████████▄▄,,,,,,,,,,▄▄▄▄██▀`               
+                                ╙███████████████████████████▌`▀▀▀▀▀▀▀▀▀▀`                       
+                                    ▀████████████████████████▀                                  
+                                        ▀▀▀▀▀██████▄██████▀`                                    
+                                        ▀███████▀██████                                         
+                                                    ███                                         
+                                                    ▄██▀                                        
+                                                ▄▄██▀'                                          
+                                                ▀▀                                              
+                                                                                                ", @"
+                               ,▄                                                               
+                            ▄███████▄▄      ,▄▄▄▄████▓▓@▄▄                                      
+                            ████████████████████████████████,                  ,▄               
+                             ▀   ███████████████████████████████▄▄▄,,      ,▄▄█▀'               
+                                  ▀██████████████████████████C    ""▀▀▀▀▀▀▀▀▀`                  
+                                    ▀█████████▀▀▀▀██████████▌                                   
+                                      ▀██, ██Q▄██ ▐███▀██████                                   
+                                         ` ▀██▀▀  ▐██▌  ▀█████▄▄                                
+                                                  ▐██▌     ▀▀▀██▌                               
+                                                ,████        ██▀                                
+                                             ▀██▀▀'        ██▀                                  
+                                                                                                ", @"
+                              ▄▄█▄▄▄,,                                                          
+                            █████████████▄▄▄▄▄▄▄▄▄▄▄▄▄█████████▄                                
+                            ███▀▀█████████████████████████████████▄▄                            
+                                  ▀████████████████████████████████▄▀▀█▄▄▄▄,     ,,▄▄           
+                                   ▐██████████████████▀▀▀""▀█████████▄▄▄▄▄ ▀▀▀▀▀▀▀▀▀▀           
+                               ,▄██████████████▀▀▀▀`       ▐███████████████▄,                   
+                              ▐██▀██▄                       ▀█████████,    ▀████                
+                              ██   ▀▀`                        `▀▀▀▀▀████▄                       
+                                                                       ▀██                      
+                                                                        ██▌                     
+                                                                        `▀""                    
+                                                                                                ", @"
+                                    ,▄                                                          
+                                  ▄████████▄▄▄             ,▄╥▄æ▄▄▄▄▄▄,                         
+                                  ████████████████▄▄▄▄▄█████████████████▀▀██▄▄,                 
+                                   ▀   ▀██████████████████████████████████▄█▄▄███▄▄,            
+                                       ╓████████████████████████████████████████████████▀       
+                            ,,  ,,,▄▄▄████████████████████████▀     ▀███████▀▀    '""`'         
+                            ▀██████████████▀  ▀▀▀▀████████▀▀                                    
+                               - --`                                                            
+                                                                    
+                                                                    
+                                                                    
+                                                                                                ", @"
+                                                                ,▄▄▄▄▄▄,    ,,,,,,              
+                                  ╓▄▄▄,                    ,▄████████████▀▀▀▀▀▀▀▀▀▀▀██▄▄        
+                                ▐██████████▄▄,       ,▄▄████████████████▌,▄            ▀▀█▄     
+                                ▐███████████████████████████████████████████▄            ╙█L    
+                                      ╙███████████████████████████████████████                  
+                                      ,▄█████████████████████▀███████████▀█████▄                
+                            ▄▄,,▄▄▄▄▄████████████████████▀▀    ▀▀██▀▀▀     ▀▀█▀▀                
+                            ▀▀▀▀▀▀▀▀▀▀▀▀█████▀▀▀▀▀▀▀▀▀-                                         
+                                       /█████                                                   
+                                     ,▄███▀                                                     
+                                 ,▄▄██▀""                                                       
+                                 ▀▀▀                                                            
+                                                                                                ", @"
+                                                           ▄▄▄████▄▄  ,▄▄███▀▀▀▀▀▀▀▀██▄▄        
+                                                      ▄▄██████████████▀▀               ▀██▄     
+                             ╓▄██▄▄▄▄,            ▄▄███████████████████                  `▀     
+                            ▐█████████████████████████████████████████""                        
+                            ▀███████████████████████████████████████████▌                       
+                                    ███████████████████████▀▀▀▀█████████                        
+                                    j████████████████████▀         ╒███▌                        
+                                     ████████████████▀▀            ▐███                         
+                                    ╒█████▀▀▀▀▀▀▀▀███▄▄            ╙█▀                          
+                                   ,█████▀          ▀████▄                                      
+                                 ▄███▀▀                ▀███▄                                    
+                             ▄▄███▀                       ▀▀                                    
+                             ▀▀`                                                                
+                                                                                                ", @"
+                                                      ,▄▄▄▄▄,             ,▄▄▄███▀▀▀▀▀███╕      
+                                                ,▄▄█████████████▄     ,▄██▀▀-                   
+                            ,▄██████▄▄▄▄,,,▄▄██████████████████████▄██▀'                        
+                            ████████████████████████████████████████                            
+                            ▀█▀▀▀▀▀████████████████████████████████`                            
+                                    `▀██████████████████▀█████████                              
+                                       ▀▀█████████████▄   ▄██████▀                              
+                                          `▀▀███▀▀'""▀███████████                               
+                                             ▐██▄      ▀███████▀                                
+                                              ╙██▌         ""▀▀▀                                
+                                               ╙██                                              
+                                                ▐█▌                                             
+                                                                                                ", @"
+                                                                              ,▄▄▄▄▄▄▄          
+                                               ▄▄██████▄▄,                ,▄██▀▀                
+                                            ▄███████████████▄           ▄██▀                    
+                             ▄█████▄▄▄, ,,▄████████████████████▄     ▄██▀                       
+                            █████████████████████████████████████▄██▀▀                          
+                            ▀██▀▀▀██████████████████████████████▀                               
+                                    ▀████████████████▌-▀█████▀▀▀                                
+                                       ▀▀████████████████████▌                                  
+                                           ▀▀▀█████▀███▄▄                                       
+                                             ▄▄█████▄, ▀▀                                       
+                                             ▀▀`   ▀█████µ                                      " };
+            TextAnimation.TextAnimation3(frames, 100, Name, "retreating");
         }
 
         public void UserInput()
@@ -131,14 +239,22 @@ namespace Week7GroupWork.Entities
             Name ??= "Tom";
             Console.Clear();
             Console.CursorVisible = true;
-            Console.WriteLine($"Calculating {Name}'s Velocity...\n\n");
-            Console.Write("Enter distance traveled (in meters): ");
+
+            ZConsole.DrawBox(0, Console.WindowWidth - 1, 0, 2);
+            ZConsole.Write($"Calculating {Name}'s Velocity", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.TOP_CENTER, yOffset: 1);
+
+            ZConsole.DrawBox(0, Console.WindowWidth - 1, 3, Console.WindowHeight - 5);
+            ZConsole.DrawBox(0, Console.WindowWidth - 1, Console.WindowHeight - 4, Console.WindowHeight - 2);
+            ZConsole.Write("Enter distance traveled (in meters): ", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.TOP_LEFT, yOffset: 5, xOffset: 2);
             double distanceTraveled = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Enter total time elapsed (in seconds): ");
+
+            ZConsole.Write("Enter total time elapsed (in seconds): ", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.TOP_LEFT, yOffset: 6, xOffset: 2);
             double timeElapsed = Convert.ToDouble(Console.ReadLine());
 
-            Console.WriteLine($"\n{Name} is moving at {GetVelocity(distanceTraveled, timeElapsed)} m/s.");
-            Console.WriteLine("\nPress any key to go back.");
+            ZConsole.Write($"{Name} is moving at {GetVelocity(distanceTraveled, timeElapsed)} m/s.", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.TOP_LEFT, yOffset: 8, xOffset: 2);
+
+            Console.CursorVisible = false;
+            ZConsole.Write("Press any key to go back.", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.BOTTOM_LEFT, yOffset: 3, xOffset: 2);
             Console.ReadKey(true);
         }
 
@@ -151,14 +267,14 @@ namespace Week7GroupWork.Entities
         public void Eat()
         {
             Name ??= "Tom";
-            string[] frames = { $"{Name} is eating.", $"{Name} is eating..", $"{Name} is eating...", $"{Name} is eating   " };
+            string[] frames = { $"{Name} is eating.  ", $"{Name} is eating.. ", $"{Name} is eating...", $"{Name} is eating   " };
             TextAnimation.TextAnimation1(frames, 100, Name, "eating");
         }
 
         public void Drink()
         {
             Name ??= "Tom";
-            string[] frames = { $"{Name} is drinking.", $"{Name} is drinking..", $"{Name} is drinking...", $"{Name} is drinking   " };
+            string[] frames = { $"{Name} is drinking.  ", $"{Name} is drinking.. ", $"{Name} is drinking...", $"{Name} is drinking   " };
             TextAnimation.TextAnimation1(frames, 100, Name, "drinking");
         }
     }

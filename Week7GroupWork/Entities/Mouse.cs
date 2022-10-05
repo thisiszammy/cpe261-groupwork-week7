@@ -46,7 +46,7 @@ namespace Week7GroupWork.Entities.Enums
                     ShowJerryMenu();
                     break;
                 case ApplicationPageEnum.Run:
-                    Run("Jerry");
+                    Run(0, "Jerry");
                     StartJerry();
                     break;
                 case ApplicationPageEnum.Retreat:
@@ -91,21 +91,29 @@ namespace Week7GroupWork.Entities.Enums
 
         public override void Back()
         {
-            string[] frames = { $"Jerry is retreating.", $"Jerry is retreating..", $"Jerry is retreating...", $"Jerry is retreating   " };
-            TextAnimation.TextAnimation1(frames, 100);
+            string[] frames = { $"Jerry is retreating.  ", $"Jerry is retreating.. ", $"Jerry is retreating...", $"Jerry is retreating   " };
+            TextAnimation.TextAnimation1(frames, 100, "Jerry", "retreating");
         }
         public void UserInput()
         {
             Console.Clear();
             Console.CursorVisible = true;
-            Console.WriteLine($"Calculating Jerry's Velocity...\n\n");
-            Console.Write("Enter distance traveled (in meters): ");
+
+            ZConsole.DrawBox(0, Console.WindowWidth - 1, 0, 2);
+            ZConsole.Write("Calculating Jerry's Velocity", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.TOP_CENTER, yOffset: 1);
+
+            ZConsole.DrawBox(0, Console.WindowWidth - 1, 3, Console.WindowHeight - 5);
+            ZConsole.DrawBox(0, Console.WindowWidth - 1, Console.WindowHeight - 4, Console.WindowHeight - 2);
+            ZConsole.Write("Enter distance traveled (in meters): ", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.TOP_LEFT, yOffset: 5, xOffset: 2);
             double distanceTraveled = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Enter total time elapsed (in seconds): ");
+
+            ZConsole.Write("Enter total time elapsed (in seconds): ", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.TOP_LEFT, yOffset: 6, xOffset: 2);
             double timeElapsed = Convert.ToDouble(Console.ReadLine());
 
-            Console.WriteLine($"\nJerry is moving at {GetVelocity(distanceTraveled, timeElapsed)} m/s.");
-            Console.WriteLine("\nPress any key to go back.");
+            ZConsole.Write($"Jerry is moving at {GetVelocity(distanceTraveled, timeElapsed)} m/s.", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.TOP_LEFT, yOffset: 8, xOffset: 2);
+
+            Console.CursorVisible = false;
+            ZConsole.Write("Press any key to go back.", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.BOTTOM_LEFT, yOffset: 3, xOffset: 2);
             Console.ReadKey(true);
         }
         public override double GetVelocity(double distance, double time)
@@ -116,12 +124,12 @@ namespace Week7GroupWork.Entities.Enums
 
         public void Eat()
         {
-            string[] frames = { $"Jerry is eating.", $"Jerry is eating..", $"Jerry is eating...", $"Jerry is eating   " };
+            string[] frames = { $"Jerry is eating.  ", $"Jerry is eating.. ", $"Jerry is eating...", $"Jerry is eating   " };
             TextAnimation.TextAnimation1(frames, 100, "Jerry", "eating");
         }
         public void Drink()
         {
-            string[] frames = { $"Jerry is drinking.", $"Jerry is drinking..", $"Jerry is drinking...", $"Jerry is drinking   " };
+            string[] frames = { $"Jerry is drinking.  ", $"Jerry is drinking.. ", $"Jerry is drinking...", $"Jerry is drinking   " };
             TextAnimation.TextAnimation1(frames, 100, "Jerry", "drinking");
         }
     }
