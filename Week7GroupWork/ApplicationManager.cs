@@ -69,7 +69,8 @@ namespace Week7GroupWork
                     // Week 3 Assignment 1
                     break;
                 case ApplicationPageEnum.W4A1:
-                    // Week 4 Assignment 1
+                    Week3Assignment1V2Wrapper w3a1_2 = new Week3Assignment1V2Wrapper(new Week3Assignment1_V2());
+                    w3a1_2.Display();
                     break;
                 case ApplicationPageEnum.W4A2:
                     // Week 4 Assignment 2
