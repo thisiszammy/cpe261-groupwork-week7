@@ -27,14 +27,17 @@ namespace Week7GroupWork.Entities.BaseEntities
         {
             this.radius = radius;
         }
+        public Shape()
+        {
 
+        }
         public double Length { get => length; set => length = value; }
         public double Width { get => width; set => width = value; }
         public double Radius { get => radius; set => radius = value; }
         public double Height { get => height; set => height = value; }
 
         public abstract double GetArea();
-        public abstract double GetPerimeter();
+        public abstract double GetSurfaceArea();
         public abstract double GetVolume();
     }
 }
