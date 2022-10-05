@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Week7GroupWork.Entities.Enums;
 using Week7GroupWork.Services;
 using Week7GroupWork.WrapperClasses;
+using Week7GroupWork.WrapperClasses.ApplicationClasses;
 
 namespace Week7GroupWork
 {
@@ -14,12 +15,16 @@ namespace Week7GroupWork
     {
         Week6Assignment1Wrapper week6Assignment1Wrapper;
         Week6Assignment2Wrapper week6Assignment2Wrapper;
+        Week2ActivityWrapper week2ActivityWrapper;
+        
         Stack<ApplicationPageEnum> navigationHistory;
 
         public ApplicationManager()
         {
             week6Assignment1Wrapper = new Week6Assignment1Wrapper();
             week6Assignment2Wrapper = new Week6Assignment2Wrapper();
+            week2ActivityWrapper = new Week2ActivityWrapper();
+            
             navigationHistory = new Stack<ApplicationPageEnum>();
         }
         public void Start()
@@ -52,9 +57,12 @@ namespace Week7GroupWork
                     RunExit();
                     break;
                 case ApplicationPageEnum.ASS3:
-                    // Assignment 3 Function
+                    Week1AppWrapper week = new Week1AppWrapper(new Week1App());
+                    week.weekass3();
+                    
                     break;
                 case ApplicationPageEnum.W2Act:
+                    RunWeek2ActApp();
                     // Week 2 Activity
                     break;
                 case ApplicationPageEnum.W3A1:
@@ -146,10 +154,17 @@ namespace Week7GroupWork
             Console.CursorVisible = true;
             week6Assignment1Wrapper.Run();
         }
+        
         private void RunWeek6Assignment2App()
         {
             Console.Clear();
             week6Assignment2Wrapper.Run();
+        }
+            
+        private void RunWeek2ActApp()
+        {
+            Console.Clear();
+            week2ActivityWrapper.Run();
         }
     }
 }
