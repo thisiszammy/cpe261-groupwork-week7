@@ -40,7 +40,7 @@ namespace Week7GroupWork.WrapperClasses.ApplicationClasses
             } 
             ZConsole.Write($"Sum = {sum}", 0, 1, null, null, flag: ZConsole.ConsoleFormatFlags.CENTER, yOffset: 10, xOffset: 0);
             ZConsole.Write($"Average = {Math.Round(ave, 3)}", 0, 1, null, null, flag: ZConsole.ConsoleFormatFlags.CENTER, yOffset: 12, xOffset: 0);
-            ZConsole.Write("Press any key to move back...", 0, 1, null, null, flag: ZConsole.ConsoleFormatFlags.CENTER, yOffset: 16, xOffset: 0);
+            ZConsole.Write("Press any key to go back to the menu.", 0, 1, null, null, flag: ZConsole.ConsoleFormatFlags.CENTER, yOffset: 16, xOffset: 0);
             Console.ReadKey();
         }
         private void DrawPage()
