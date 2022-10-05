@@ -8,7 +8,7 @@ namespace Week7GroupWork.WrapperClasses.ApplicationClasses
 {
     internal class Week2Activity
     {
-        static void Main(string[] args)
+        public void Run()
         {
             int n, j = 1;
             double ave = 0, sum = 0;
@@ -31,11 +31,9 @@ namespace Week7GroupWork.WrapperClasses.ApplicationClasses
             }
             Console.WriteLine();
             Console.WriteLine("Sum = {0}", sum);
-            Console.ReadKey();
             Console.Write("Average = {0:F3}", Math.Round(ave, 3));
             Console.ReadKey();
         }
-
         internal void Main()
         {
             throw new NotImplementedException();
