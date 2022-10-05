@@ -15,7 +15,6 @@ namespace Week7GroupWork.WrapperClasses
         {
             this.functionality = new Week2Activity();
         }
-        public void Main() => functionality.Main();
-
+        public void Run() => functionality.Run();
     }
 }

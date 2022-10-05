@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Week7GroupWork.Services;
 
 namespace Week7GroupWork.WrapperClasses.ApplicationClasses
 {
@@ -34,9 +35,11 @@ namespace Week7GroupWork.WrapperClasses.ApplicationClasses
             Console.Write("Average = {0:F3}", Math.Round(ave, 3));
             Console.ReadKey();
         }
-        internal void Main()
+        private void DrawPage()
         {
-            throw new NotImplementedException();
+            Console.Clear();
+            ZConsole.DrawBox(0, Console.WindowWidth - 1, 0, 2);
+            ZConsole.Write("Week 2 Problem 1", 0, 1, null, null, flag: ZConsole.ConsoleFormatFlags.CENTER);
         }
     }
 }
