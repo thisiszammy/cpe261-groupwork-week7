@@ -24,7 +24,6 @@ namespace Week7GroupWork.WrapperClasses
         }
 
         public void Run() => functionality.Run();
-
         public Shape[] Shapes { get => functionality.Shapes; set => functionality.Shapes = value; }
         
     }

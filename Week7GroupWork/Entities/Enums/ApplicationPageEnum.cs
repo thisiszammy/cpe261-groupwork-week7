@@ -17,15 +17,21 @@ namespace Week7GroupWork.Entities.Enums
         About,
         [Description("Exit")]
         Exit,
+        [Description("Assignment 3")]
+        ASS3,
+        [Description("Week 2 Activity")]
+        W2Act,
+        [Description("Week 3 Assignment 1")]
+        W3A1,
+        [Description("Week 4 Assignment 1")]
+        W4A1,
+        [Description("Week 4 Assignment 2")]
+        W4A2,
         [Description("Week 6 Assignment 1")]
         W6A1,
         [Description("Week 6 Assignment 2")]
         W6A2,
-        [Description("Week 6 Assignment 3")]
-        W6A3,
-        [Description("Week 6 Assignment 4")]
-        W6A4,
         [Description("Back")]
-        Back
+        Back,
     }
 }
