@@ -49,13 +49,32 @@ namespace Week7GroupWork
                 case ApplicationPageEnum.Exit:
                     RunExit();
                     break;
+                case ApplicationPageEnum.ASS3:
+                    // Assignment 3 Function
+                    break;
+                case ApplicationPageEnum.W2Act:
+                    // Week 2 Activity
+                    break;
+                case ApplicationPageEnum.W3A1:
+                    // Week 3 Assignment 1
+                    break;
+                case ApplicationPageEnum.W4A1:
+                    // Week 4 Assignment 1
+                    break;
+                case ApplicationPageEnum.W4A2:
+                    // Week 4 Assignment 2
+                    break;
+                case ApplicationPageEnum.W6A1:
+                    // Week 6 Assignment 1
+                    RunWeek6Assignment1App();
+                    break;
+                case ApplicationPageEnum.W6A2:
+                    // Week 6 Assignment 2
+                    break;
                 case ApplicationPageEnum.Back:
                     navigationHistory.Pop();
                     GotoPage(navigationHistory.Peek(), true);
                     return;
-                case ApplicationPageEnum.W6A1:
-                    RunWeek6Assignment1App();
-                    break;
             }
             GotoPage(ApplicationPageEnum.Back, true);
         }
@@ -72,10 +91,13 @@ namespace Week7GroupWork
         {
             DisplaySelection("SIMP 7 MENU", new ApplicationPageEnumWrapper[]
             {
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.ASS3),
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.W2Act),
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.W3A1),
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.W4A1),
+                new ApplicationPageEnumWrapper(ApplicationPageEnum.W4A2),
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A1),
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A2),
-                new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A3),
-                new ApplicationPageEnumWrapper(ApplicationPageEnum.W6A4),
                 new ApplicationPageEnumWrapper(ApplicationPageEnum.Back)
             });
         }
