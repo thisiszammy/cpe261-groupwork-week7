@@ -11,35 +11,46 @@ namespace Week7GroupWork.WrapperClasses.ApplicationClasses
     {
         public void Run()
         {
-            int n, j = 1;
+            DrawPage();
+            int j = 1;
             double ave = 0, sum = 0;
-            Console.WriteLine("How many numbers would you like to store in an array?");
-            n = int.Parse(Console.ReadLine());
+            ZConsole.Write("How many numbers would you like to store in an array? ", 0, 1, null, null, flag: ZConsole.ConsoleFormatFlags.CENTER, yOffset: 6, xOffset: 0);
+            int n = Int32.Parse(Console.ReadLine());
             int[] arryNum = new int[n];
-            Console.WriteLine("Input {0} elements in the array:", n);
+            Console.Clear();
+            DrawPage();
+            ZConsole.Write($"Input {n} elements in the array: ", 0, 1, null, null, flag: ZConsole.ConsoleFormatFlags.CENTER, yOffset: 6, xOffset: 0);
             for (int i = 0; i < n; i++)
-            {
-                Console.WriteLine("Element {0}: ", j);
-                arryNum[i] = int.Parse(Console.ReadLine());
+            { 
+                ZConsole.Write($"Element {j}: ", 0, 1, null, null, flag: ZConsole.ConsoleFormatFlags.CENTER, yOffset: 10, xOffset: 0); ;
+                arryNum[i] = Int32.Parse(Console.ReadLine());
                 sum += arryNum[i];
                 j++;
+                Console.Clear();
+                ZConsole.Write($"Input {n} elements in the array: ", 0, 1, null, null, flag: ZConsole.ConsoleFormatFlags.CENTER, yOffset: 6, xOffset: 0);
+                DrawPage();
             }
+            Console.Clear();
+            DrawPage();
             ave = sum / n;
-            Console.Write("Elements of array: ");
+            ZConsole.Write("Elements of the array: ", 0, 1, null, null, flag: ZConsole.ConsoleFormatFlags.CENTER, yOffset: 8, xOffset: 0);
             for (int i = 0; i < n; i++)
             {
                 Console.Write("{0} ", arryNum[i]);
-            }
-            Console.WriteLine();
-            Console.WriteLine("Sum = {0}", sum);
-            Console.Write("Average = {0:F3}", Math.Round(ave, 3));
+            } 
+            ZConsole.Write($"Sum = {sum}", 0, 1, null, null, flag: ZConsole.ConsoleFormatFlags.CENTER, yOffset: 10, xOffset: 0);
+            ZConsole.Write($"Average = {Math.Round(ave, 3)}", 0, 1, null, null, flag: ZConsole.ConsoleFormatFlags.CENTER, yOffset: 12, xOffset: 0);
+            ZConsole.Write("Press any key to move back...", 0, 1, null, null, flag: ZConsole.ConsoleFormatFlags.CENTER, yOffset: 16, xOffset: 0);
             Console.ReadKey();
         }
         private void DrawPage()
         {
-            Console.Clear();
             ZConsole.DrawBox(0, Console.WindowWidth - 1, 0, 2);
             ZConsole.Write("Week 2 Problem 1", 0, 1, null, null, flag: ZConsole.ConsoleFormatFlags.CENTER);
+            ZConsole.Write("======ARRAYS======", 0, 0, null, null, flag: ZConsole.ConsoleFormatFlags.CENTER, yOffset: 4, xOffset: 0);
+
+            ZConsole.DrawBox(0, Console.WindowWidth - 1, 3, Console.WindowHeight - 2);
+            ZConsole.DrawClosedPipe(5, 0, Console.WindowWidth - 1);
         }
     }
 }
